@@ -1,21 +1,58 @@
-// Create a simple calendar application that allows a user to save events for each hour of the day
-//  powered by jQuery.
+var plannerText;
+var plannerTime;
+var saveBtn = $('.saveBtn');
 
-// You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time.
+var renderDate = function() {
+    $('#currentDay').text('Today is ' + moment().format('MMMM Do YYYY, h:mm:ss a'));
+}
+// a function to get current date and time and attach to id of currentDay
+renderDate();
+
+// a function to save input from textarea and the timeblock saved in
+saveBtn.on("click", function()
+{   console.log(this);
+    plannerText = $(this).siblings('.description').val();
+    plannerTime = $(this).parent().attr('id');
+
+    // save in local storage
+    localStorage.setItem(plannerText, plannerTime);
+})
+
+// get saved data from local storage for each hour
+$("#hour8 .description").val(localStorage.getItem("hour8"));
+$("#hour9 .description").val(localStorage.getItem("hour9"));
+$("#hour10 .description").val(localStorage.getItem("hour10"));
+$("#hour11 .description").val(localStorage.getItem("hour11"));
+$("#hour12 .description").val(localStorage.getItem("hour12"));
+$("#hour13 .description").val(localStorage.getItem("hour13"));
+$("#hour14 .description").val(localStorage.getItem("hour14"));
+$("#hour15 .description").val(localStorage.getItem("hour15"));
+$("#hour16 .description").val(localStorage.getItem("hour16"));
 
 
-// AS AN employee with a busy schedule
-// I WANT to add important events to a daily planner
-// SO THAT I can manage my time effectively
+function scheduler(){
+// get current time
+var currentTime = moment().hour();
+// a function to change color for each timeblock
+$(".time-block").each(function () {
+    var timeBlock = parseInt($(this).attr("id").split("hour")[1]);
 
-
-// WHEN I open the planner
-// THEN the current day is displayed at the top of the calendar
-// THEN I am presented with timeblocks for standard business hours
-// THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-// WHEN I click into a timeblock
-// THEN I can enter an event
-// WHEN I click the save button for that timeblock
-// THEN the text for that event is saved in local storage
-// WHEN I refresh the page
-// THEN the saved events persist
+    // adding classes to times so that the color changes based on past, present, or future hours
+    if (timeBlock < currentTime) {
+        $(this).addClass("past");
+        $(this).removeClass("present");
+        $(this).removeClass("future"); 
+    }
+    else if (timeBlock === currentTime) {
+        $(this).removeClass("past");
+        $(this).addClass("present");
+        $(this).removeClass("future");
+    }
+    else {
+        $(this).removeClass("past");
+        $(this).removeClass("present");
+        $(this).addClass("future");
+    }
+})
+}
+scheduler();
