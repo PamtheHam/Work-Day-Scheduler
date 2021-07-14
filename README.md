@@ -4,5 +4,6 @@ In this project, I modified starter code on a simple calendar application that a
 Included in this README is a link to the page: file:///Users/pamelahammond/Desktop/Bootcamp/Work-Day-Scheduler/index.html
 
 [Work Day Scheduler Screenshot 1.pdf](https://github.com/PamtheHam/Work-Day-Scheduler/files/6818435/Work.Day.Scheduler.Screenshot.1.pdf)
+
 [Work Day Scheduler Screenshot 2.pdf](https://github.com/PamtheHam/Work-Day-Scheduler/files/6818436/Work.Day.Scheduler.Screenshot.2.pdf)
 
