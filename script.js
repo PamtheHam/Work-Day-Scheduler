@@ -15,7 +15,7 @@ saveBtn.on("click", function()
     plannerTime = $(this).parent().attr('id');
 
     // save in local storage
-    localStorage.setItem(plannerText, plannerTime);
+    localStorage.setItem(plannerTime, plannerText);
 })
 
 // get saved data from local storage for each hour
